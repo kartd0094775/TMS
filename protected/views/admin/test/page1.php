@@ -1,0 +1,1 @@
+<img src="<?php print $b; ?>/img/test/page1.jpg">

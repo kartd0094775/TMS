@@ -1,0 +1,127 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+body {
+	font-size:16px;
+	font-family:"微軟正黑體", "新細明體", "標楷體";
+}
+/*Font Fix*/
+h1,h2,h3,h4,h5,p,
+.interactive-slider-v2 p,
+.cbp-l-filters-text .cbp-filter-item,
+.cbp-l-caption-title {
+	font-family:"微軟正黑體", "新細明體", "標楷體";
+}
+.header-v6 .navbar-nav > li > a,
+.header-v6 .dropdown-menu li a,
+.headline-center-v2 p,
+.breadcrumb-v5 > li {
+	font-size:16px;
+}
+
+.cbp-l-filters-text .cbp-filter-item,
+.cbp-l-filters-text {
+	font:400 16px/21px "微軟正黑體", sans-serif;
+}
+.cbp-l-caption-desc {
+	font:400 14px/16px "微軟正黑體", sans-serif
+}
+.sky-form {
+	font:16px/22px '微軟正黑體', Helvetica, Arial, sans-serif;
+
+}
+p {
+	line-height:24px;
+}
+/*End Font Fix*/
+/*headfix*/
+.navbar-brand {
+	padding:15px 5px;
+}
+/*End headfix*/
+.wrapper {
+	background-image:url(../img/bg/tapsr-bg.jpg);
+}
+.cbp-l-caption-title,
+.news-v2 .news-v2-desc h3 {
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+a:hover {
+	text-decoration:none;
+}
+
+h2.title-v2 {
+	padding-bottom:15px;
+	margin-bottom:50px;
+}
+.tab-content li:nth-child(n+2){
+	border-top:1px solid #efefef;
+}
+.border-bottom {
+	margin-bottom:20px;
+	border-bottom:1px solid #efefef;
+}
+.article h2{
+	font-weight:600;
+}
+.article p {
+	margin-bottom:30px;
+}
+.news-v3 {
+	margin-bottom:15px;
+}
+.news-v3-in-sm h2 a{
+	font-weight:600;
+}
+/*Breadcrumbs v5
+------------------------------------*/
+.breadcrumb-v5 {
+  padding: 20px 0;
+  list-style: none;
+}
+
+.breadcrumb-v5 > li {
+  color: #999;
+  display: inline-block;
+}
+
+.breadcrumb-v5 > li + li:before {
+  color: #ccc;
+  content: "\f105";
+  margin-left: 7px;
+  padding-right: 8px;
+  font-family: FontAwesome;
+}
+
+.breadcrumb-v5 li h1 {
+  margin: 0;
+}
+
+.breadcrumb-v5 li a {
+  color: #999;
+}
+
+.breadcrumb-v5 li i {
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.breadcrumb-v5 li.active,
+.breadcrumb-v5 li a:hover {
+  color: #72c02c;
+  text-decoration: none;
+}
+.footer-v6 .footer .contacts li {
+	margin-bottom:10px;
+}
+.footer p.font-bold {
+	font-size:17px;
+}
+
+/*table*/
+.table h3 {
+	font-weight:600;
+}

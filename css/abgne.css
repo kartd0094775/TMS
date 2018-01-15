@@ -1,0 +1,7 @@
+.abgne_product_arrow_silder { width:1240px; margin:0 auto; height: 250px; position: relative; overflow: hidden;}
+.abgne_product_arrow_silder dl, .abgne_product_arrow_silder dl dt { margin: 0; padding: 0; list-style: none;}
+.abgne_product_arrow_silder dl { width:1200px; margin:0 auto;}
+.prev { background:url(../images/prev.png) no-repeat; width: 38px; height: 48px; position: absolute; left: 0px;	/* 先藏在左邊 */ top: 40px;		/* (區塊高-圖片高) / 2 */ z-index: 100;}
+.next { background:url(../images/next.png) no-repeat; width: 38px; height: 48px; position: absolute; right: 0;	/* 先藏在右邊 */ top: 40px;		/* (區塊高-圖片高) / 2 */ z-index:100;}
+.abgne_product_arrow_silder dl dt { position: absolute; z-index: 1;}
+.abgne_product_arrow_silder dl dt.selected { z-index: 99;}

@@ -1,0 +1,48 @@
+diff a/css/layout.css b/css/layout.css	(rejected hunks)
+@@ -128,30 +128,30 @@
+ 
+ /* -- 主選單-- */
+ .u-vmenu { position: fixed; right:0; top:0; z-index:9999;}
+-.u-vmenu .LOGO { background:url(../images/LOGOBG.jpg) repeat-x; height:161px; text-align:center; padding-top:70px;}
+-.u-vmenu ul li { width: 257px; list-style: none; background:rgba(189, 19, 19, 0.5);}
++.u-vmenu .LOGO { background: url(../images/LOGOBG.jpg) repeat-x; height:97px; text-align:center; padding-top:38px;}
++.u-vmenu ul li { width: 257px; list-style: none; background:rgba(189, 19, 19, 0.7);}
+ .u-vmenu ul li img { margin-right:10px;}
+ .u-vmenu ul ul { display: none;}
+ .u-vmenu > ul > li {}
+-.u-vmenu ul li a { height: 44px; line-height: 44px; display: block; font-size: 1em; color: #FFF; text-decoration: none; outline: none;}
+-.u-vmenu ul li a:hover { height: 44px; line-height: 44px; display: block; font-size: 1em; color: #FFF; text-decoration: none; outline: none;}
+-.u-vmenu > ul > li > a { height: 44px; line-height: 44px; padding-left: 35px;}
+-.u-vmenu > ul > li > ul > li > a { padding-left: 0px; padding-left: 35px;}
++.u-vmenu ul li a { height: 56px; line-height: 56px; display: block; font-size: 0.93em; color: #FFF; text-decoration: none; outline: none;}
++.u-vmenu ul li a:hover { height: 56px; line-height: 56px; display: block; font-size: 0.93em; color: #FFF; text-decoration: none; outline: none;}
++.u-vmenu > ul > li > a { height: 56px; line-height: 56px; padding-left: 35px;}
++.u-vmenu > ul > li > ul > li > a { padding: 0 10px; width:50%; float:left; text-align:center;}
+ .u-vmenu > ul > li > ul > li > ul > li > a { text-align: center;}
+ .u-vmenu > ul > li > ul > li > ul > li > ul > li > a {}
+-.u-vmenu > ul > li > a:hover, .u-vmenu > ul > li > ul > li > a:hover, .u-vmenu > ul > li > ul > li > ul > li > a:hover, .u-vmenu > ul > li > ul > li > ul > li > ul > li > a:hover { background:rgba(189, 19, 19, 1);}
+-.u-vmenu ul li a[data-option='on']{ background: url(../images/on.png) right center no-repeat; height:70px; line-height:70px; font-size:1.2em;}
+-.u-vmenu ul li a[data-option='off'] { background: url(../images/off.png) right center no-repeat; height:70px; line-height:70px; font-size:1.2em;}
++.u-vmenu > ul > li > a:hover, .u-vmenu > ul > li > ul > li > a:hover, .u-vmenu > ul > li > ul > li > ul > li > a:hover, .u-vmenu > ul > li > ul > li > ul > li > ul > li > a:hover { background:rgba(189, 19, 19, 0.7);}
++.u-vmenu ul li a[data-option='on']{ background: url(../images/on.png) right center no-repeat; height:50px; line-height:50px;}
++.u-vmenu ul li a[data-option='off'] { background: url(../images/off.png) right center no-repeat; height:50px; line-height:50px;}
+ .u-vmenu ul li a:hover[data-option='on']{ background: url(../images/on.png) right center no-repeat;}
+ .u-vmenu ul li a:hover[data-option='off'] { background: url(../images/off.png) right center no-repeat;}
+-.u-vmenu ul li ul li.menutel { text-align:center; height:50px; line-height:50px;}
++.u-vmenu ul li ul li.menutel { text-align:center; height:50px; line-height:50px; clear:both; background:none;}
+ .u-vmenu ul li ul li.menutel-M { display:none;}
+-.u-vmenu ul li ul li.menuicon { text-align:center; height:65px; line-height:65px; padding-left:5px;}
+-.u-vmenu ul li ul li.menuicon a { display:block; width:38px; height:38px; margin:13px 11px; float:left;}
+-.u-vmenu ul li ul li.menuicon a.share { background:url(../images/icon_Share.png) no-repeat center top;}
+-.u-vmenu ul li ul li.menuicon a.login { background:url(../images/icon_Form.png) no-repeat center top;}
+-.u-vmenu ul li ul li.menuicon a.member { background: url(../images/icon_Member.png) no-repeat center top;}
+-.u-vmenu ul li ul li.menuicon a.fb { background:url(../images/icon_FB.png) no-repeat center top;}
++.u-vmenu ul li ul li.menuicon { text-align:center; height:65px; line-height:65px; padding-left:5px; background:none;}
++.u-vmenu ul li ul li.menuicon a { display:block; width:34px; height:34px; margin:10px 13px; float:left; border:none;}
++.u-vmenu ul li ul li.menuicon a.share { background:url(../images/icon_Share.png) no-repeat center top; background-size: 34px auto;}
++.u-vmenu ul li ul li.menuicon a.login { background:url(../images/icon_Form.png) no-repeat center top; background-size: 34px auto;}
++.u-vmenu ul li ul li.menuicon a.member { background: url(../images/icon_Member.png) no-repeat center top; background-size: 34px auto;}
++.u-vmenu ul li ul li.menuicon a.fb { background:url(../images/icon_FB.png) no-repeat center top; background-size: 34px auto;}
+ .u-vmenu ul li ul li.menuicon a:hover { background-position: center bottom;}
+ 
+ /* -- 首頁輪播大圖 -- */

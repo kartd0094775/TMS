@@ -1,0 +1,194 @@
+.enterpriseListPhoto {
+	max-width: 375px;
+	max-height: 210px;
+}
+
+.reportListPhoto {
+	/*max-width: 270px;*/
+	/*max-height: 170px;*/
+}
+
+.newsListPhoto {
+	max-width: 570px;
+	max-height: 360px;
+}
+
+#conMain img {
+	max-width: 100% !important;
+}
+/*
+ .u-vmenu .LOGO {
+ height: 177px;
+ padding-top: 73px;
+ background: #004151;
+ }
+
+ .u-vmenu {
+ width: 300px;
+ }
+
+ .u-vmenu ul li {
+ width: 100%;
+ }
+ */
+/*
+ .menuLogo {
+ width: 175px;
+ }
+ .u-vmenu .LOGO {
+ padding-top: 65px;
+ }*/
+
+#path {
+	overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+	#subMenu-M select {
+		background: url(../images/arrow.png) no-repeat scroll right 10px center #fff;
+	}
+}
+
+.moreNews {
+	background: #1b6a88;
+	padding: 35px 0px;
+	margin: 0px;
+}
+
+#news {
+	height: auto;
+}
+
+#eventList li {
+	height: auto;
+}
+
+#newsList .listtitle {
+	font-size: 1.3em;
+}
+
+#eventList .listinfotxt {
+	height: auto;
+}
+
+.inputAlert {
+	border: 1px #F00 solid !important;
+}
+.fieldAlert {
+	color: #F00 !important;
+}
+
+.mobile {
+	display: none;
+}
+@media screen and (max-width: 768px) {
+	.mobile {
+		display: block;
+	}
+}
+
+.u-vmenu ul li ul li.menuicon a.shareFb {
+	background: url(../img/menu-Fb.png) no-repeat center top;
+}
+.u-vmenu ul li ul li.menuicon a.shareGoogle {
+	background: url(../img/menu-Gplus.png) no-repeat center top;
+}
+.u-vmenu ul li ul li.menuicon a.shareLine {
+	background: url(../img/menu-Line.png) no-repeat center top;
+}
+.u-vmenu ul li ul li.menuicon a.shareMail {
+	background: url(../img/menu-Mail.png) no-repeat center top;
+}
+
+.menuBottomShare {
+	height: 33px !important;
+	cursor: pointer;
+	margin: 10px 1.5% !important;
+	margin-top: 13px;
+}
+.menuBottomShare:hover {
+	background-position: center bottom !important;
+}
+
+#businessList .listphoto img {
+	width: 100%;
+	height: auto;
+}
+
+/* -- 清單頁分享 -- */
+
+/*
+ .listShare {
+ clear: both;
+ display: block;
+ float: none;
+ }
+ .listShare a {
+ width: 25px;
+ height: 25px;
+ display: block;
+ margin-right: 8px;
+ float: right;
+ }
+ .listShare a.mail {
+ background: url(../images/icon_mail.png) no-repeat center top;
+ background-size: 25px auto;
+ }
+ .listShare a.fb {
+ background: url(../images/icon_FBs.png) no-repeat center top;
+ background-size: 25px auto;
+ }
+ .listShare a.google {
+ background: url(../images/icon_g+.png) no-repeat center top;
+ background-size: 25px auto;
+ }
+ .listShare a.line {
+ background: url(../images/icon_line.png) no-repeat center top;
+ background-size: 25px auto;
+ }
+ .listShare a:hover {
+ background-position: center bottom;
+ background-size: 25px auto;
+ }
+ */
+.listShare {
+	clear: both;
+	display: block;
+	float: none;
+}
+.listShare a {
+	width: 25px;
+	height: 25px;
+	display: block;
+	margin-right: 8px;
+	float: right;
+}
+.listShare a.mail {
+	background: url(../images/share_mail.png) no-repeat center top;
+	background-size: 25px auto;
+}
+.listShare a.fb {
+	background: url(../images/share_FBs.png) no-repeat center top;
+	background-size: 25px auto;
+}
+.listShare a.google {
+	background: url(../images/share_gplus.png) no-repeat center top;
+	background-size: 25px auto;
+}
+.listShare a.line {
+	background: url(../images/share_line.png) no-repeat center top;
+	background-size: 25px auto;
+}
+.listShare a:hover {
+	background-position: center bottom;
+	background-size: 25px auto;
+}
+
+.wrapper {
+	border: 1px #ccc solid;
+	border-radius: 10px;
+	width: 1024px;
+	max-width: 90%;
+	margin: auto;
+	padding: 5%;
+}

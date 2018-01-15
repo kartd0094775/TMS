@@ -1,0 +1,8 @@
+Server key:
+AAAApm4gcqA:APA91bFfTxqKI9C0UGw4SBbWc6h1BejTMiW3oeSiO7eW0kS2jdmXjRkhqCAdt_M3XL6kXu7-Uydysn62QdigP6FGBdxsfw4tqyUYGxwx-ge3mX2hXH0LVHBDUL6bwoeCAz0Fokbe0Tez
+
+Sender Id:
+714812191392
+
+Push Token:
+APA91bGmWRXDCcCNJZwahb-TrXXa4gpazjs3pdPj_-DI7A0n1i5L4G6b283cxBvTyTWYte6UcgkNoXEebnMsG1nBGcQTe9BQ51mMvspCNfiKkY7oGKwQk0jyfq5RUmabcAs-tkVl4XQs

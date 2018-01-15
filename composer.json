@@ -1,0 +1,10 @@
+{
+    "name": "bitty/taipei-station",
+    "authors": [
+        {
+            "name": "Bitty",
+            "email": "bittyferrari@gmail.com"
+        }
+    ],
+    "require": {}
+}

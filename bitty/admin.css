@@ -1,0 +1,97 @@
+.hide {
+	display: none;
+}
+.pointer {
+	cursor: pointer;
+}
+
+.pageFrame a {
+	cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}
+
+.myCheckbox {
+	margin-right: 20px;
+}
+
+.listThumb {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.photoThumb {
+
+	max-width: 100px;
+	max-height: 100px;
+	transition: all 0.2s ease-in-out;
+}
+
+.photoThumb:hover {
+
+	transform: scale(1.2);
+}
+
+#content {
+	overflow: auto !important;
+}
+
+.checkboxMainPhoto {
+	transition: all 0.2s ease-in-out;
+	display: inline-block;
+	outline: none !important;
+}
+
+.checkboxMainPhoto:checked {
+
+	transform: rotate(360deg) scale(2);
+}
+
+#tablePhoto {
+	border: 1px solid rgba(255,255,255,0.2);
+	border-collapse: collapse;
+}
+
+.listThumb {
+	max-height: 40px;
+	max-width: 40px;
+}
+
+button, input, optgroup, select, textarea {
+	color: #444;
+}
+/*
+ body.bg-1 {
+ background: #ccc;
+ }
+ .navbar-nav.side-nav > li.navigation .menu > li > a, .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown > a {
+ color: #333;
+ }
+ .tile.color [class^="tile-"]{
+
+ }
+
+ .tile.color.transparent-black {
+ background-color: rgba(0, 0, 0, 0.5);
+ }
+ */
+.modal-body .form-group {
+	margin: 0px;
+}
+
+#page-wrapper {
+	border: 1px solid #eee;
+	border-radius: 5px;
+	margin: 0 0 0 250px;
+	padding: 10px 30px 20px;
+	position: inherit;
+}
+
+.must {
+	color: #f00;
+}
+.pageheader i {
+	margin-right: 8px;
+}

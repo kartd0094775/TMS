@@ -1,0 +1,32 @@
+RewriteEngine on
+
+Options -Indexes
+
+
+ 
+#RewriteRule ^resource/(.*)\.svg$ verify.php [L]
+
+
+
+RewriteRule ^resource/(.*) verify.php
+
+
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+#RewriteRule "^resource\.svg$"  "verify.php" [PT]
+#RewriteRule "^resource\.txt$"  "verify.php" [PT]
+#RewriteRule "^resource\.png$"  "verify.php" [PT]
+#RewriteRule "^resource\.jpg$"  "verify.php" [PT]
+#RewriteRule "^resource\.dat$"  "verify.php" [PT]
+
+
+#RewriteRule ^resource/(.+)/map/\.svg$ verify.php [L]
+
+
+
+# otherwise forward it to index.php
+RewriteRule . index.php [L]
