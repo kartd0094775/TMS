@@ -136,7 +136,10 @@ print $this -> printJson('building', $temp);
 					</div>
 				</div>
                                 -->
+                                <!-- 2018/1/17 Wayne -->
                                 <input type="hidden" name="cityID" id="cityID" />
+                                <input type="hidden" name="address" id="address" />
+                                <input type="hidden" name="building_id" id="building_id" />
 				<div class="form-group">
 					<label for="fullname" class="col-sm-2 control-label" ><span t>Floor</span></label>
 					<div class="col-sm-10">
@@ -391,7 +394,7 @@ print $this -> printJson('isRead', $this -> isItemRead);
 	$(document).ready(function() {
 
 		// filterBuilding();
-               let response = fetch(`http://192.168.1.109:5000/poi/building`).then(response => {
+               let response = fetch(`http://192.168.1.109:80/yanjing/api/poi/building/`).then(response => {
                   return response.json()
                 }).then(function(value){
                   buildingOptions = value
@@ -402,11 +405,17 @@ print $this -> printJson('isRead', $this -> isItemRead);
                     })
                   $('#buildingID').selectpicker('refresh');
                 })
+
                 $('#buildingID').change(function(event){
                   let index = $('#buildingID')[0].selectedIndex
                   let building = buildingOptions[index]
                   let city_id = building.location_id.split(" ")[1]
+                  let address = building.address
+                  let building_id = building.id
                   $('#cityID').val(city_id)
+                  $('#address').val(address)
+                  $('#building_id').val(building_id)
+
                 })
                if (data != null) {
                    assignFormValue('form', data);

@@ -44,6 +44,15 @@ print $this -> printJson('rois', $temp);
 
 $floorID = get('id');
 print $this -> printJson('floorID', $floorID);
+
+$temp = null;
+$map = Floor::model() -> find($floorID);
+$temp['id'] = $map['id'];
+$temp['buildingID'] = $map['buildingID'];
+$temp['floor'] = $map['floor'];
+$temp['block'] = $map['block'];
+$temp['address'] = $map['address'];
+print $this -> printJson('map', $temp);
 ?>
 
 <div id="css">
@@ -357,9 +366,9 @@ print $this -> printJson('floorID', $floorID);
 			<!-- tile body -->
 			<div class="tile-body">
 
-				<!-- <form role="form" class="form-horizontal" parsley-validate id="form" method="post" action="<?php print $this -> url('updateDo'); ?>" enctype="multipart/form-data" > -->
-
-				<input type="hidden" name="id" />
+				<form role="form" class="form-horizontal" parsley-validate id="form" method="post" action="<?php print $this -> url('createPointDo'); ?>" enctype="multipart/form-data" >
+                                <input type="hidden" name="id" id="id"/>
+                                <input type="hidden" name="bf_poi_id" id="bf_poi_id"/>
 				<!-- <div class="form-group">
 				<label for="fullname" class="col-sm-2 control-label" t><span>zzzzzzzzz</span> *</label>
 				<div class="col-sm-10">
@@ -426,7 +435,7 @@ print $this -> printJson('floorID', $floorID);
                                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
                                                 <div class="row">
                                                         <label for="fullname" class="col-sm-4 control-label" ><span t>Brand</span></label>
-                                                        <div class="col-sm-12">
+                                                        <div class="col-sm-8">
                                                             <select id="brandID" name="brandID" class="selectpicker" data-live-search="true" data-width="fit" data-size="8">
                                                                 <option value="-1">----</option>
                                                             </select>
@@ -674,11 +683,9 @@ print $this -> printJson('floorID', $floorID);
 
 							<div id="qqqq" style="width:100%;background:url(<?php print $b . '/upload/floor/' . $item['svg']; ?>) no-repeat center / 100% 100%;"></div>
 
-							<!--
 							<div id="frameSvg" style="display:none">
-							<?php //print $svg; ?>
+							<?php $svg; ?>
 							</div>
-							-->
 
 							<div class="previewDot" style="left:0px; top:0px;"></div>
 							<div class="roiPreviewCircle" style="left:0px; top:0px;"></div>
@@ -784,7 +791,7 @@ print $this -> printJson('floorID', $floorID);
 					</div>
 				</div>
 
-				<!-- </form> -->
+				</form>
 
 			</div>
 			<!-- /tile body -->
@@ -874,15 +881,53 @@ print $this -> printJson('floorID', $floorID);
 </div>
 <script>
   $(document).ready(() => {
-    let res = fetch(`http://192.168.1.109/poi/brand`)
+    let res = fetch(`http://192.168.1.109:80/yanjing/api/poi/brand/`)
       .then(response => {
         return response.json()
       }).then(value => {
-        value.map(obj, index) => {
+        value.map((obj, index) => {
           $('#brandID').append('<option value="' + obj.id + '">' + obj.name + "</option>")
-        }
+        })
+        $('#brandID').selectpicker('refresh')
       })
   })
+
+  function createPOI() {
+    // check
+    const brand_id = $('#brandID').val()
+    const x = $('#x').val()
+    const y = $('#y').val()
+    if ($('#brandID').val() == -1 || x === '' || y === '') {
+      return;
+    }
+    const poi = {
+      brand_id: brand_id,
+      building_id: map.buildingID,
+      floor: map.floor,
+      block: map.block,
+      price: 0,
+      name: map.address + ' ' + $('#brandID').children()[$('#brandID')[0].selectedIndex].innerHTML,
+      counter: $('#counter').val()
+    }
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(poi)
+    }
+    let res = fetch(`http://192.168.1.109:80/yanjing/api/poi/`, requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText)
+        }
+        return response.json();
+      }).then(response => {
+        if (response.id) {
+          const id = response.id
+          $('#bf_poi_id').val(id)
+          $('#form').submit()
+        }
+      })
+  }
 </script>
 <?php
 

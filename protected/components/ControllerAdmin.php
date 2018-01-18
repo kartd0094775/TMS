@@ -955,8 +955,9 @@ class ControllerAdmin extends Controller {
 				}
 
 			}
-		}
-		if ($isSave) {
+                }
+                // if (isSave)
+		if (True) {
 			$item['version'] = $newCode;
 			$item['code'] = $code;
 			$item['buildingID'] = $buildingID;

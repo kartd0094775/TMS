@@ -264,7 +264,7 @@ print $this -> printJson('buildingID', $buildingID);
         var city = {}
 
         $(document).ready(function() {
-          let res_building = fetch(`http://192.168.1.109:5000/poi/building`)
+          let res_building = fetch(`http://192.168.1.109:80/yanjing/api/poi/building/`)
             .then(response => {
               return response.json()
             }).then(function(value) {
@@ -273,7 +273,7 @@ print $this -> printJson('buildingID', $buildingID);
                $('#buildingID').append('<option value="' + obj.id + '">' + obj.name + '</option>')
               })
             })
-          let res_location = fetch(`http://192.168.1.109:5000/poi/location`)
+          let res_location = fetch(`http://192.168.1.109:80/yanjing/api/poi/location/`)
             .then(response => {
               return response.json()
             }).then(value => {
@@ -336,11 +336,11 @@ print $this -> printJson('buildingID', $buildingID);
 		var v = $('#cityID').val();
 
 		var html = '<option value="">----</option>';
-		for (var i in buildingFilter[v]) {
-			var x = buildingFilter[v][i];
-			html += '<option value="' + i + '">' + x + '</option>';
+	//	for (var i in buildingFilter[v]) {
+	//		var x = buildingFilter[v][i];
+	//		html += '<option value="' + i + '">' + x + '</option>';
 
-		}
+	//	}
 
 		//$('#buildingID').html(html);
 

@@ -17,3 +17,5 @@ upload/icon/
 protected/tmp/
 
 /vendor/
+
+*.swp

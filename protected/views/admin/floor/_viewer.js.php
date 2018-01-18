@@ -809,7 +809,6 @@
 		var sliderRatio = parseInt(ratio * 100);
 
 		currentScale = ratio * 100;
-
 		$("#slider").slider({
 			value : sliderRatio,
 			max : 100,
@@ -938,8 +937,8 @@
 			var xx = x;
 			var yy = y;
 
-			log(x);
-			log(xx);
+			log('x: ' + x);
+			log('y: ' + y);
 			// log(yy);
 			// $('#x').val(x );
 			// $('#y').val(y );

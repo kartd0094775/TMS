@@ -49,7 +49,8 @@ class FloorController extends ControllerAdminCrud {
 		$radius = post('radius');
 		$message = post('message');
 		$x = post('x');
-		$y = post('y');
+                $y = post('y');
+                $bf_poi_id = post('bf_poi_id');
 		$iconID = post('iconID');
 		$typeID = post('typeID');
 
@@ -69,6 +70,7 @@ class FloorController extends ControllerAdminCrud {
 					$item['nameEnglish'] = $nameEnglish;
 					$item['priorityFrom'] = $priorityFrom;
 					$item['priorityTo'] = $priorityTo;
+                                        $item['bf_poi_id'] = $bf_poi_id;
 
 					$item['x'] = $x;
 					$item['y'] = $y;
@@ -168,12 +170,11 @@ class FloorController extends ControllerAdminCrud {
 					}
 				}
 			}
-
-			$building = Building::model() -> findByPk($item['buildingID']);
-
+                        // 2018-01-17 wayne
+			//$building = Building::model() -> findByPk($item['buildingID']);
+                        //$item['buildingID'] = post('item['buildingID']');
 			// $file = $this -> basePath . '/../upload/floor/' . $item['svg'];
-			$file = $this -> basePath . '/../resource/' . $building['code'] . '/map/' . $item['floor'] . '.svg';
-
+			$file = $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/' . $item['floor'] . '.svg';
 			if (is_file($file)) {
 				$myfile = fopen($file, "r") or die("Unable to open file!");
 				$viewData['svg'] = fread($myfile, filesize($file));
@@ -386,7 +387,10 @@ class FloorController extends ControllerAdminCrud {
 			$c -> addCondition('t.cityID = :cityID');
 			$params[':cityID'] = $search['cityID'];
 		}
-
+		if (!empty($search['address'])) {
+			$c -> addCondition('t.address = :address');
+			$params[':address'] = $search['address'];
+		}
 		// if (!empty($search['statusID']) || $search['statusID'] == '0') {
 		// $c -> addCondition('t.statusID = :statusID');
 		// $params[':statusID'] = $search['statusID'];
@@ -536,7 +540,7 @@ class FloorController extends ControllerAdminCrud {
 		$item['name'] = post('name');
 
 		$item['cityID'] = post('cityID');
-
+                $item['address'] = post('address');
 		$item['buildingID'] = post('buildingID');
 		//if ($item) {
 		//	if (!$this -> isAdminRole()) {
@@ -576,7 +580,7 @@ class FloorController extends ControllerAdminCrud {
 		$item['offsetY'] = $offsetY;
 
                 $item['floor'] = post('floor');
-                $item['counter'] = post('counter');
+                $item['block'] = post('block');
 		$item['ratio'] = post('ratio');
 		$item['mapMax'] = post('mapMax');
 		$item['mapMin'] = post('mapMin');
@@ -600,29 +604,30 @@ class FloorController extends ControllerAdminCrud {
 		}
 
 		if ($isSaveSuccess) {
-			$building = Building::model() -> findByPk($item['buildingID']);
+                  //$building = Building::model() -> findByPk($item['buildingID']);
+                        //$item['buildingID'] = post('item['buildingID']');
 			if (isset($_FILES['svg'])) {
 				if (!empty($_FILES['svg']['name'])) {
 					//copy file to resource
-					copy($this -> basePath . '/../upload/floor/' . $item['svg'], $this -> basePath . '/../resource/' . $building['code'] . '/map/' . $item['floor'] . '.svg');
+                                        copy($this -> basePath . '/../upload/floor/' . $item['svg'], $this -> basePath . '/../resource/' . $item['buildingID']  . '/map/' . $item['floor'] . '.svg');
 					$this -> addVersionLog($item['buildingID'], 'svg', $item['floor'] . '.svg');
 				}
 
 				if (!empty($_FILES['fileFinger1']['name'])) {
 					//copy file to resource
-					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger1'], $this -> basePath . '/../resource/' . $building['code'] . '/map/floor' . $item['floor'] . '_loc.dat');
+					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger1'], $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/floor' . $item['floor'] . '_loc.dat');
 					$this -> addVersionLog($item['buildingID'], 'dat', 'floor' . $item['floor'] . '_loc.dat');
 				}
 
 				if (!empty($_FILES['fileFinger2']['name'])) {
 					//copy file to resource
-					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger2'], $this -> basePath . '/../resource/' . $building['code'] . '/map/floor' . $item['floor'] . '_s.dat');
+					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger2'], $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/floor' . $item['floor'] . '_s.dat');
 					$this -> addVersionLog($item['buildingID'], 'dat', 'floor' . $item['floor'] . '_s.dat');
 				}
 
 				if (!empty($_FILES['fileFinger3']['name'])) {
 					//copy file to resource
-					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger3'], $this -> basePath . '/../resource/' . $building['code'] . '/map/floor' . $item['floor'] . '.dat');
+					copy($this -> basePath . '/../upload/floor/' . $item['fileFinger3'], $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/floor' . $item['floor'] . '.dat');
 					$this -> addVersionLog($item['buildingID'], 'dat', 'floor' . $item['floor'] . '.dat');
 				}
 			}
