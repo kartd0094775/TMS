@@ -45,7 +45,7 @@ $floorID = get('id');
 print $this -> printJson('floorID', $floorID);
 
 $temp = null;
-$map = Floor::model() -> find($floorID);
+$map = Floor::model() -> findByPk($floorID);
 $temp['id'] = $map['id'];
 $temp['buildingID'] = $map['buildingID'];
 $temp['floor'] = $map['floor'];
