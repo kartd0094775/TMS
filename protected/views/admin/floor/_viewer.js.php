@@ -274,13 +274,7 @@
 
 			$('#poiInfoWindow').addClass('active');
 
-			var name = $(e).find('.name').text();
-			var number = $(e).find('.number').text();
-			var nameEnglish = $(e).find('.nameEnglish').text();
 
-			$('#poiInfoWindow .name').text(name);
-			$('#poiInfoWindow .number').text(number);
-			$('#poiInfoWindow .nameEnglish').text(nameEnglish);
 		} else {
 
 			if ($(e).hasClass('picked')) {
@@ -317,13 +311,11 @@
 		$('#roiInfoWindow').css('top', top + '');
 		$('#roiInfoWindow').addClass('active');
 
-		var name = $(e).find('.name').text();
 		var radius = $(e).find('.radius').text();
 		var message = $(e).find('.message').text();
 
 		currentRoiID = $(e).find('.id').text();
 
-		$('#roiInfoWindow .name').text(name);
 		$('#roiInfoWindow .radius').text(radius);
 		$('#roiInfoWindow .message').text(message);
 
@@ -341,10 +333,8 @@
 	function addPoi(item) {
 
 		var id = item.id;
-		var name = item.name;
 		var iconID = item.iconID;
-		var nameEnglish = item.nameEnglish;
-		var number = item.number;
+                var bf_poi_id = item.bf_poi_id;
 		var x = item.x;
 		var y = item.y;
 		var poiTypeID = item.poiTypeID;
@@ -359,33 +349,32 @@
 
 			html += '<img class="icon" style="display:block" src="' + baseUrl + '/resource/icon/icon_' + icons[iconID]['code'] + '.png" />';
 
-			if (nameEnglish == null) {
-				nameEnglish = '';
-			}
-			if (number == null) {
-				number = '';
-			}
-			if (name == null) {
-				name = '';
-			}
+			//if (nameEnglish == null) {
+			//	nameEnglish = '';
+			//}
+			//if (number == null) {
+			//	number = '';
+			//}
+			//if (name == null) {
+			//	name = '';
+			//}
 
 			//calculate width
 
 			html += '<span class="x">' + x + '</span>';
 			html += '<span class="y">' + y + '</span>';
-			html += '<span class="name">' + name + '</span>';
-			html += '<span class="nameEnglish">' + nameEnglish + '</span>';
-			html += '<span class="number">' + number + '</span>';
+			//html += '<span class="name">' + name + '</span>';
+			//html += '<span class="nameEnglish">' + nameEnglish + '</span>';
+			//html += '<span class="number">' + number + '</span>';
 			html += '<span class="id">' + id + '</span>';
 
 			html += '</div>';
 
 			$('#svgContainer').append(html);
 		}
-
 	}
 
-	function addRoi(id, x, y, radius, name, message) {
+	function addRoi(id, bf_poi_id, x, y, radius, message) {
 
 		var html = '';
 
@@ -429,15 +418,13 @@
 
 	function createPointDo() {
 
-		var number = $('#number').val();
-		var nameEnglish = $('#nameEnglish').val();
 		var priorityFrom = $('#priorityFrom').val();
 		var priorityTo = $('#priorityTo').val();
 
-		var name = $('#name').val();
 		var radius = $('#radius').val();
 		var x = $('#x').val();
 		var y = $('#y').val();
+                var bf_poi_id = $('#bf_poi_id').val();
 		var iconID = $('#iconID').val();
 		var typeID = $('#typeID').val();
 		var message = $('#message').val();
@@ -449,11 +436,6 @@
 			isOK = false;
 			alertMessage += "請選擇位置\n";
 		}
-		if (name == '') {
-			isOK = false;
-			alertMessage += "請輸入名稱\n";
-		}
-
 		switch (typeID) {
 		case 'poi':
 			if (iconID == '') {
@@ -485,12 +467,9 @@
 				dataType : 'json',
 				data : {
 
-					number : number,
-					nameEnglish : nameEnglish,
 					priorityFrom : priorityFrom,
 					priorityTo : priorityTo,
-
-					name : name,
+                                        bf_poi_id: bf_poi_id,
 					radius : radius,
 					x : x,
 					y : y,
@@ -501,7 +480,6 @@
 				},
 				success : function(r) {
 					//qqq
-
 					if (r.id != 0) {
 
 						switch (typeID) {
@@ -511,26 +489,25 @@
 							poiItem.id = r.id;
 							poiItem.x = x;
 							poiItem.y = y;
-							poiItem.name = name;
 							poiItem.iconID = iconID;
 							poiItem.poiTypeID = icons[iconID]['typeID'];
-							poiItem.nameEnglish = nameEnglish;
-							poiItem.number = number;
-
+                                                        poiItem.bf_poi_id = r.bf_poi_id
 							log(poiItem)
 							// addPoi(r.id, x, y, name, iconID, nameEnglish, number);
 							addPoi(poiItem);
-
 							break;
 
 						case 'roi':
-							addRoi(r.id, x, y, radius, name, message)
+							addRoi(r.id, bf_poi_id, x, y, radius, message)
 							break;
 
 						}
 					}
 
-				}
+                                },
+                              error: function(ajaxContext) {
+                                alert(ajaxContext.responseText)
+                              }
 			});
 		} else {
 			alert(alertMessage);

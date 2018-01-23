@@ -83,14 +83,14 @@ print $this -> printJson('building', $temp);
 				</div>
 				</div>
 				-->
-
+                                <!--
 				<div class="form-group">
 					<label for="fullname" class="col-sm-2 control-label" ><span t>Name</span></label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="name" id="name" />
 					</div>
 				</div>
-
+                                -->
 				<!-- <div class="form-group hide">
 				<label for="fullname" class="col-sm-2 control-label" ><span t>in Company</span></label>
 				<div class="col-sm-10">
@@ -109,7 +109,7 @@ print $this -> printJson('building', $temp);
                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
                                 <div class ="form-group">
-                                   <label for="fullname" class="col-sm-2 control-label" ><span t>Building</span></label>
+                                   <label for="fullname" class="col-sm-2 control-label" ><span t>Building *</span></label>
                                    <div class="col-sm-10">
                                     <select id="buildingID" name="buildingID" class="selectpicker" data-live-search="true" data-width="fit" class="form-control" data-size="8">
                                       <option value='-1'>----</option>
@@ -141,7 +141,7 @@ print $this -> printJson('building', $temp);
                                 <input type="hidden" name="address" id="address" />
                                 <input type="hidden" name="building_id" id="building_id" />
 				<div class="form-group">
-					<label for="fullname" class="col-sm-2 control-label" ><span t>Floor</span></label>
+					<label for="fullname" class="col-sm-2 control-label" ><span t>Floor *</span></label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="floor"  id="floor"/>
 					</div>
@@ -211,11 +211,11 @@ print $this -> printJson('building', $temp);
 				</div>
 
 				<div class="form-group">
-					<label for="fullname" class="col-sm-2 control-label" ><span t>Upload SVG</span> </label>
+					<label for="fullname" class="col-sm-2 control-label" ><span t>Upload SVG *</span> </label>
 
 					<div class="col-sm-10">
 						<div name="svg"></div>
-						<input type="file" class="form-control" name="svg" style="height:auto;" />
+						<input type="file" class="form-control" id="svg" name="svg" style="height:auto;" />
 						<!-- <br> -->
 						<!-- (upload png file, reupload will reset svg) -->
 					</div>
@@ -312,9 +312,11 @@ if (isset($item)) {
 	// $data['createUserName'] = $createUser['name'];
 	// $data['updateUserName'] = $updateUser['name'];
 
-	if (!empty($data['svg'])) {
-		//$data['svg'] = '<a href="' . $b . '/upload/floor/' . $data['svg'] . '" target="_blank">檔案下載: ' . $item['floor'] . '.svg</a>';
-		$data['svg'] = '<a href="' . $b . '/resource/' . $building['code'] . '/map/' . $data['floor'] . '.svg" target="_blank">檔案下載: ' . $item['floor'] . '.svg</a>';
+        if (!empty($data['svg'])) {
+                if (empty($data['block']))
+		  $data['svg'] = '<a href="' . $b . '/resource/' . $data['buildingID'] . '/map/' . $data['floor'] . '.svg" target="_blank">檔案下載: ' . $item['floor'] . '.svg</a>';
+                else
+		  $data['svg'] = '<a href="' . $b . '/resource/' . $data['buildingID'] . '/map/' . $data['floor'] . '-' . $data['block'] . '.svg" target="_blank">檔案下載: ' . $item['floor'] . '-' . $data['block'] . '.svg</a>';
 	}
 
 	if (!empty($data['fileFinger1'])) {
@@ -348,20 +350,25 @@ print $this -> printJson('isRead', $this -> isItemRead);
 
                 //create
 		var floor = $('#floor').val();
-		var name = $('#name').val();
+                var name = $('#name').val();
+                var svg = $('#svg').val();
                 var buildingID = $('#buildingID').val();
 
 		var isOk = true;
 		var message = '';
 
-		if (name == '') {
+		if (name === '') {
 			message += "Please fill in name.\n";
 			isOk = false;
 		}
-		if (floor == '') {
+		if (floor === '') {
 			message += "Please fill in floor.\n";
 			isOk = false;
-		}
+                }
+                if (svg === '') {
+                        message += "Please choose the svg file.\n"
+                        isOk = false;
+                }
                 if (buildingID == -1) {
                         message += "Please select the building.\n";
                         isOk = false;
@@ -391,9 +398,7 @@ print $this -> printJson('isRead', $this -> isItemRead);
 		$('#buildingID').html(html);
 
         }
-	$(document).ready(function() {
-
-		// filterBuilding();
+        function fetchButterflyBuilding() {
                let response = fetch(`http://192.168.1.109:80/yanjing/api/poi/building/`).then(response => {
                   return response.json()
                 }).then(function(value){
@@ -417,6 +422,12 @@ print $this -> printJson('isRead', $this -> isItemRead);
                   $('#building_id').val(building_id)
 
                 })
+        }
+	$(document).ready(function() {
+
+                // filterBuilding();
+               fetchButterflyBuilding();
+
                if (data != null) {
                    assignFormValue('form', data);
 			// filterBuilding();

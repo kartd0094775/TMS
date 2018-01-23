@@ -40,12 +40,9 @@ class FloorController extends ControllerAdminCrud {
 
 		$data = null;
 
-		$number = post('number');
-		$nameEnglish = post('nameEnglish');
 		$priorityFrom = post('priorityFrom');
 		$priorityTo = post('priorityTo');
 
-		$name = post('name');
 		$radius = post('radius');
 		$message = post('message');
 		$x = post('x');
@@ -64,10 +61,7 @@ class FloorController extends ControllerAdminCrud {
 					$item = new FloorPoi;
 					$item['floorID'] = $floorID;
 					$item['buildingID'] = $floor['buildingID'];
-					$item['name'] = $name;
-					$item['number'] = $number;
 
-					$item['nameEnglish'] = $nameEnglish;
 					$item['priorityFrom'] = $priorityFrom;
 					$item['priorityTo'] = $priorityTo;
                                         $item['bf_poi_id'] = $bf_poi_id;
@@ -78,7 +72,7 @@ class FloorController extends ControllerAdminCrud {
 					$item['createTime'] = new CDbExpression('NOW()');
 					$item['updateTime'] = new CDbExpression('NOW()');
 
-					$r = $item -> save();
+                                        $r = $item -> save();
 					if ($r) {
 						$id = $item['id'];
 					}
@@ -89,7 +83,6 @@ class FloorController extends ControllerAdminCrud {
 					$item = new FloorRoi;
 					$item['floorID'] = $floorID;
 					$item['buildingID'] = $floor['buildingID'];
-					$item['name'] = $name;
 					// $item['iconID'] = $iconID;
 					$item['x'] = $x;
 					$item['y'] = $y;
@@ -173,8 +166,12 @@ class FloorController extends ControllerAdminCrud {
                         // 2018-01-17 wayne
 			//$building = Building::model() -> findByPk($item['buildingID']);
                         //$item['buildingID'] = post('item['buildingID']');
-			// $file = $this -> basePath . '/../upload/floor/' . $item['svg'];
-			$file = $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/' . $item['floor'] . '.svg';
+                        // $file = $this -> basePath . '/../upload/floor/' . $item['svg'];
+                        if (empty($item['block']))
+		          $file = $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/' . $item['floor'] . '.svg';
+                        else
+                          $file = $this -> basePath . '/../resource/' . $item['buildingID'] . '/map/' . $item['floor'] . '-' . $item['block'] . '.svg';
+
 			if (is_file($file)) {
 				$myfile = fopen($file, "r") or die("Unable to open file!");
 				$viewData['svg'] = fread($myfile, filesize($file));
@@ -200,7 +197,7 @@ class FloorController extends ControllerAdminCrud {
 				$c -> addCondition('t.floorID = :floorID');
 				$params[':floorID'] = $item['id'];
 				$c -> params = $params;
-				$c -> select = 'id, name, nameEnglish, number, x, y, iconID, priorityFrom, priorityTo, priority, iconID';
+				$c -> select = 'id, bf_poi_id, x, y, iconID, priorityFrom, priorityTo, priority, iconID';
 
 				//find all poi
 				$pois = FloorPoi::model() -> findAll($c);
@@ -481,7 +478,6 @@ class FloorController extends ControllerAdminCrud {
 				if (move_uploaded_file($file['tmp_name'], $fileImg)) {
 					$fileArray = null;
 					$fileArray['fileName'] = $fileName;
-					$fileArray['ext'] = $ext;
 					$files[] = $fileArray;
 				} else {
 					$error = true;
@@ -605,12 +601,25 @@ class FloorController extends ControllerAdminCrud {
 
 		if ($isSaveSuccess) {
                   //$building = Building::model() -> findByPk($item['buildingID']);
-                        //$item['buildingID'] = post('item['buildingID']');
+                  //$item['buildingID'] = post('item['buildingID']');
+                  if (!file_exists($this -> basePath . '/../resource/' . $item['buildingID'])) {
+                          $oldmask = umask(0);
+                          mkdir($this -> basePath . '/../resource/' . $item['buildingID'], 0777);
+                          umask($oldmask);
+                          $oldmask = umask(0);
+                          mkdir($this -> basePath . '/../resource/' . $item['buildingID'] . '/map', 0777);
+                          umask($oldmask);
+                  }
 			if (isset($_FILES['svg'])) {
 				if (!empty($_FILES['svg']['name'])) {
 					//copy file to resource
-                                        copy($this -> basePath . '/../upload/floor/' . $item['svg'], $this -> basePath . '/../resource/' . $item['buildingID']  . '/map/' . $item['floor'] . '.svg');
-					$this -> addVersionLog($item['buildingID'], 'svg', $item['floor'] . '.svg');
+                                        if (empty($item['block'])) {
+                                          copy($this -> basePath . '/../upload/floor/' . $item['svg'], $this -> basePath . '/../resource/' . $item['buildingID']  . '/map/' . $item['floor'] . '.svg');
+                                          $this -> addVersionLog($item['buildingID'], 'svg', $item['floor'] . '.svg');
+                                        } else {
+                                          copy($this -> basePath . '/../upload/floor/' . $item['svg'], $this -> basePath . '/../resource/' . $item['buildingID']  . '/map/' . $item['floor'] . '-' . $item['block'] . '.svg');
+                                          $this -> addVersionLog($item['buildingID'], 'svg', $item['floor'] . '-' . $item['block'] . '.svg');
+                                        }
 				}
 
 				if (!empty($_FILES['fileFinger1']['name'])) {

@@ -48,12 +48,12 @@ class FloorPoi extends _Model
 		// will receive user inputs.
 		return array(
 			array('floorID, buildingID', 'required'),
-			array('poiID, floorID, buildingID, iconID, priority, publicFacilityID, vendorID, priorityFrom, priorityTo', 'numerical', 'integerOnly'=>true),
+			array('id, bf_poi_id, floorID, buildingID, iconID, priority, publicFacilityID, vendorID, priorityFrom, priorityTo', 'numerical', 'integerOnly'=>true),
 			array('name, x, y, photo, lat, lng, number, nameEnglish, photo360', 'length', 'max'=>255),
 			array('createTime, photoJson, content, url, updateTime, contentEnglish', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, poiID, floorID, name, x, y, createTime, photo, photoJson, buildingID, iconID, lat, lng, priority, publicFacilityID, vendorID, number, nameEnglish, content, priorityFrom, priorityTo, url, photo360, updateTime, contentEnglish', 'safe', 'on'=>'search'),
+			array('id, bf_poi_id, floorID, name, x, y, createTime, photo, photoJson, buildingID, iconID, lat, lng, priority, publicFacilityID, vendorID, number, nameEnglish, content, priorityFrom, priorityTo, url, photo360, updateTime, contentEnglish', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,7 +75,7 @@ class FloorPoi extends _Model
 	{
 		return array(
 			'id' => 'ID',
-                        'poiID' => 'POI',
+                        'bf_poi_id' => 'Butterfly POI',
                         'floorID' => 'Floor',
 			'name' => 'Name',
 			'x' => 'X',
@@ -121,7 +121,7 @@ class FloorPoi extends _Model
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-                $criteria->compare('poiID', $this->poiID);
+                $criteria->compare('bf_poi_id', $this->bf_poi_id);
                 $criteria->compare('floorID',$this->floorID);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('x',$this->x,true);

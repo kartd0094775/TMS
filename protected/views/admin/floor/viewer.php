@@ -1,5 +1,4 @@
 <?php
-
 $temp = null;
 if (is_array($icons)) {
 	foreach ($icons as $x) {
@@ -366,7 +365,7 @@ print $this -> printJson('map', $temp);
 			<!-- tile body -->
 			<div class="tile-body">
 
-				<form role="form" class="form-horizontal" parsley-validate id="form" method="post" action="<?php print $this -> url('createPointDo'); ?>" enctype="multipart/form-data" >
+				<!-- <form role="form" class="form-horizontal" parsley-validate id="form" method="post" action="<?php print $this -> url('createPointDo'); ?>" enctype="multipart/form-data" > -->
                                 <input type="hidden" name="id" id="id"/>
                                 <input type="hidden" name="bf_poi_id" id="bf_poi_id"/>
 				<!-- <div class="form-group">
@@ -399,7 +398,7 @@ print $this -> printJson('map', $temp);
 					<div class="col-sm-2" style="z-index:999999999">
 
 						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>Type</span></label>
+							<label for="fullname" class="col-sm-4 control-label" ><span t>Type *</span></label>
 							<div class="col-sm-8">
 
 								<select name="typeID" id="typeID" class=" form-control search" onchange="changeType()" >
@@ -410,14 +409,14 @@ print $this -> printJson('map', $temp);
 						</div>
 
 						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>X</span></label>
+							<label for="fullname" class="col-sm-4 control-label" ><span t>X *</span></label>
 							<div class="col-sm-8">
 								<input type="text" readonly="" id="x" class="form-control">
 							</div>
 						</div>
 
 						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>Y</span></label>
+							<label for="fullname" class="col-sm-4 control-label" ><span t>Y *</span></label>
 							<div class="col-sm-8">
 								<input type="text" readonly="" id="y" class="form-control">
 							</div>
@@ -428,53 +427,32 @@ print $this -> printJson('map', $temp);
                                                                 <input type="text" id="counter" name="counter" class="form-control">
                                                         </div>
                                                 </div>
+                                                <hr>
                                                 <!-- Latest compiled and minified CSS -->
                                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
                                                 <!-- Latest compiled and minified JavaScript -->
                                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
                                                 <div class="row">
-                                                        <label for="fullname" class="col-sm-4 control-label" ><span t>Brand</span></label>
+                                                        <label for="fullname" class="col-sm-4 control-label" ><span t>Brand *</span></label>
                                                         <div class="col-sm-8">
                                                             <select id="brandID" name="brandID" class="selectpicker" data-live-search="true" data-width="fit" data-size="8">
                                                                 <option value="-1">----</option>
                                                             </select>
                                                         </div>
                                                 </div>
-                                                <div class="row">
-                                                        <label for "fullname" class="col-sm-4-control-label"><span t></span></label>
-                                                        <div calss="col-sm-8" text-align="center">
-                                                          <button type="button" class="btn btn-success btn-block" onclick="createPOI()">Create</button>
-                                                        </div>
-                                                </div>
+						<div style="height:10px"></div>
 						<div class="row" id="rowRadius">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>Radius</span></label>
+							<label for="fullname" class="col-sm-4 control-label" ><span t>Radius *</span></label>
 							<div class="col-sm-8">
 								<input type="text"  id="radius" class="form-control" onkeyup="onRadiusChange()">
 							</div>
 						</div>
-						<hr>
-
-						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>Name</span></label>
-							<div class="col-sm-8">
-								<input type="text" id="name" class="form-control">
-							</div>
-						</div>
 						<div style="height:10px"></div>
-
 						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>English</span> </label>
+							<label for="fullname" class="col-sm-4 control-label" ><span t>Description</span></label>
 							<div class="col-sm-8">
-								<input type="text" id="nameEnglish" class="form-control">
-							</div>
-						</div>
-						<div style="height:10px"></div>
-
-						<div class="row">
-							<label for="fullname" class="col-sm-4 control-label" ><span t>Number</span> </label>
-							<div class="col-sm-8">
-								<input type="text" id="number" class="form-control">
+								<input type="text" id="description" class="form-control">
 							</div>
 						</div>
 						<div style="height:10px"></div>
@@ -510,9 +488,8 @@ print $this -> printJson('map', $temp);
 								// $items = Icon::model() -> findAll($c);
 
 								foreach ($icons as $x) {
-									print '<div class="col-sm-6 poiIcon"  ><img onclick="setIcon(this, ' . $x['id'] . ')" class="imgIcon" src="' . $b . '/resource/icon/icon_' . $x['code'] . '.png"><div class="iconText">' . $x['name'] . '</div></div>';
-								}
-
+								  print '<div class="col-sm-6 poiIcon"  ><img onclick="setIcon(this, ' . $x['id'] . ')" class="imgIcon" src="' . $b . '/resource/icon/icon_' . $x['code'] . '.png"><div class="iconText">' . $x['name'] . '</div></div>';
+                                                                }
 								// print $this -> printTypeOption('product.type');
 								?>
 
@@ -533,8 +510,21 @@ print $this -> printJson('map', $temp);
 							</div>
 						</div>
 						<hr>
-
+                                                 <div class="row">
+                                                         <label for "fullname" class="col-sm-4-control-label"><span t></span></label>
+                                                         <div calss="col-sm-8" text-align="center">
+                                                           <button type="button" class="btn btn-success btn-block" onclick="createPOI()">Create</button>
+                                                         </div>
+                                                 </div>
 					</div>
+
+
+
+
+
+
+
+
 
 					<div class="col-sm-10" >
 
@@ -881,24 +871,30 @@ print $this -> printJson('map', $temp);
 </div>
 <script>
   $(document).ready(() => {
-    let res = fetch(`http://192.168.1.109:80/yanjing/api/poi/brand/`)
-      .then(response => {
-        return response.json()
-      }).then(value => {
-        value.map((obj, index) => {
-          $('#brandID').append('<option value="' + obj.id + '">' + obj.name + "</option>")
-        })
-        $('#brandID').selectpicker('refresh')
-      })
+    fetchButterflyBrand()
   })
-
+  function fetchButterflyBrand() {
+   let res = fetch(`http://192.168.1.109:80/yanjing/api/poi/brand/`)
+     .then(response => {
+       return response.json()
+     }).then(value => {
+       value.map((obj, index) => {
+         $('#brandID').append('<option value="' + obj.id + '">' + obj.name + "</option>")
+       })
+       $('#brandID').selectpicker('refresh')
+     })
+  }
   function createPOI() {
     // check
     const brand_id = $('#brandID').val()
     const x = $('#x').val()
     const y = $('#y').val()
-    if ($('#brandID').val() == -1 || x === '' || y === '') {
+    if ($('#brandID').val() == -1) {
+      alert('Please choose the brand')
       return;
+    } else if (x === '' || y === '') {
+      alert ('Invalid croodinated information');
+      return
     }
     const poi = {
       brand_id: brand_id,
@@ -906,6 +902,7 @@ print $this -> printJson('map', $temp);
       floor: map.floor,
       block: map.block,
       price: 0,
+      description: $('#description').val(),
       name: map.address + ' ' + $('#brandID').children()[$('#brandID')[0].selectedIndex].innerHTML,
       counter: $('#counter').val()
     }
@@ -917,6 +914,7 @@ print $this -> printJson('map', $temp);
     let res = fetch(`http://192.168.1.109:80/yanjing/api/poi/`, requestOptions)
       .then(response => {
         if (!response.ok) {
+          alert('Failed to create butterfly_poi')
           return Promise.reject(response.statusText)
         }
         return response.json();
@@ -924,7 +922,7 @@ print $this -> printJson('map', $temp);
         if (response.id) {
           const id = response.id
           $('#bf_poi_id').val(id)
-          $('#form').submit()
+          createPointDo(); // _viewer.js
         }
       })
   }
