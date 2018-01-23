@@ -44,9 +44,9 @@
 	<link href="<?php print $baseUrl; ?>/css/jquery-ui.css" rel="stylesheet">
 
 
-	
+
 		<link rel="stylesheet" href="<?php print $baseUrl; ?>/vendor/select2/css/select2.min.css">
-		
+
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -84,9 +84,9 @@
 		?>
 
 		<script src="<?php print $baseUrl; ?>/js/jquery-1.10.2.min.js"></script>
-		
+
 			<script src="<?php print $baseUrl; ?>/vendor/select2/js/select2.min.js"></script>
-			
+
 
 		<script src="<?php print $baseUrl; ?>/js/jquery-ui-1.9.2.custom.min.js"></script>
 		<script src="<?php print $baseUrl; ?>/js/jquery.cookie.js"></script>
@@ -115,7 +115,7 @@
 				</div>
 				<!-- /.navbar-header -->
 
-				
+
 <ul class="nav navbar-top-links navbar-right">
 					<!-- /.dropdown -->
 					<!-- /.dropdown -->
@@ -132,7 +132,7 @@
 							-->
 							<!-- <li class="divider"></li> -->
 							<li>
-								
+
 								<a href="#"><i class="fa fa-user fa-fw"></i> <?php print $this -> admin['account']; ?></a>
 							</li>
 							<li>
@@ -143,7 +143,7 @@
 					</li>
 					<!-- /.dropdown -->
 				</ul>
-				
+
 
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
@@ -163,13 +163,13 @@
 							<!-- <li class="dashboardRead">
 								<a href="<?php print $this -> getUrl('index', 'dashboard'); ?>"> <i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
 							</li> -->
-							
-							<!-- 
+
+							<!--
 							<li class="adminRead" >
 								<a href="<?php print $this -> getUrl('list', 'admin'); ?>"> <i class="fa fa-male fa-fw"></i> <span t>管理員設定</span></a>
 							</li> -->
-							
-								<li class="monitorRead" >
+
+							<!--	<li class="monitorRead" >
 								<a href="<?php print $this -> getUrl('index', 'monitor'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Monitor
 								</span></a>
 							</li>
@@ -177,9 +177,9 @@
 								<a href="<?php print $this -> getUrl('list', 'building'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Building Management
 								</span></a>
 							</li>
-							
+						        -->
 								<li class="floorRead" >
-								<a href="<?php print $this -> getUrl('list', 'floor'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Floor  Management
+								<a href="<?php print $this -> getUrl('list', 'floor'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Map  Management
 								</span></a>
 							</li>
 								<li class="floorRead" >
@@ -187,76 +187,76 @@
 								</span></a>
 							</li>
 
-								<li class="cityRead" >
+								<!--<li class="cityRead" >
 								<a href="<?php print $this -> getUrl('list', 'city'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>City Management
 								</span></a>
 							</li>
-							
+
 								<li class="companyRead" >
 								<a href="<?php print $this -> getUrl('list', 'company'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Company Management
 								</span></a>
 							</li>
-							
+
 								<li class="outdoorRead" >
 								<a href="<?php print $this -> getUrl('list', 'outdoor'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Outdoor Management
 								</span></a>
-							</li>
-							
-							
+							</li>-->
+
+
 							<li class="poiTypeRead" >
-								<a href="<?php print $this -> getUrl('list', 'poiType'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>POI Types
+								<a href="<?php print $this -> getUrl('list', 'poiType'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Icon Management
 								</span></a>
 							</li>
 
 							<!-- <li class="vendorRead" >
 								<a href="<?php print $this -> getUrl('list', 'vendor'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Vendor Management
 								</span></a>
-		
+
 							</li> -->
-		
+                                                        <!--
 							<li class="versionLogRead" >
 								<a href="<?php print $this -> getUrl('list', 'versionLog'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Version Management
 								</span></a>
 							</li>
-							
-							
+
+
 							<li class="questionaryRead" >
 								<a href="<?php print $this -> getUrl('list', 'questionary'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Questionary
 								</span></a>
 							</li>
-							
+                                                        -->
 							<!-- <li class="userRead" >
 								<a href="<?php print $this -> getUrl('list', 'push'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>PUSH
 								</span></a>
 							</li> -->
-							
+                                                        <!--
 							<li class="producerRead" >
 								<a href="<?php print $this -> getUrl('list', 'producer'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Producer
 								</span></a>
 							</li>
-							
+                                                        -->
 
-<!-- 
+<!--
 							<li class="bannerRead" >
 								<a href="<?php print $this -> getUrl('list', 'banner'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Banner
 								</span></a>
 							</li>
 							 -->
-							
-							
+                                                        <!--
+
 
 <li class="positionRead">
 								<a href="#"><i class="fa fa-user-md fa-fw"></i> Position Log<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
-									
+
 									<li>
 										<a href="<?php print $this -> getUrl('list', 'position'); ?>"> <i class="fa fa-caret-right"></i> 列表</a>
 									</li>
-									
+
 									<li>
 										<a href="<?php print $this -> getUrl('outside', 'position'); ?>"> <i class="fa fa-caret-right"></i> Outside</a>
 									</li>
-									
+
 									<li>
 										<a href="<?php print $this -> getUrl('list', 'positionFloor'); ?>"> <i class="fa fa-caret-right"></i> Floor</a>
 									</li>
@@ -270,50 +270,50 @@
 							<li class="statisticsRead" >
 								<a href="<?php print $this -> getUrl('list', 'statistics'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>使用者數量/調用次數</span></a>
 							</li>
-								
+
 							<li class="adminRead" >
 								<a href="<?php print $this -> getUrl('list', 'admin'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>Admin Management
 								</span></a>
 							</li>
-							
-							
-							<!-- 
+
+                                                        -->
+							<!--
 							<li class="userRead" >
 								<a href="<?php print $this -> getUrl('list', 'banner'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>室內管理
 								</span></a>
 							</li>
-							
+
 							<li class="userRead" >
 								<a href="<?php print $this -> getUrl('list', 'banner'); ?>"> <i class="fa fa-user-md fa-fw"></i> <span t>手動上傳介面
 								</span></a>
 							</li>
 							 -->
 
-							
 
 
-                      <!--  
+
+                      <!--
 	<li class="active">
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 認識協會<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="<?php print $this -> getUrl('item?id=1', 'about'); ?>">關於我們</a>
                                 </li>
-                                
+
                                 <li>
                                     <a href="<?php print $this -> getUrl('item?id=2', 'about'); ?>">組織架構</a>
                                 </li>
-                                
+
                                 <li>
                                     <a href="<?php print $this -> getUrl('item?id=3', 'about'); ?>">協會章程</a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                     -->
 
 
-<!-- 
+<!--
 <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -325,7 +325,7 @@
                                 </li>
                             </ul>
                         </li> -->
- 
+
 
 
                         <li  >
